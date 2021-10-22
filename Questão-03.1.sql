@@ -1,0 +1,12 @@
+SELECT 
+     v.ID_PESSOA,
+     p.NM_PESSOA,
+	 t.DT_REF,
+     v.VL_VENDA
+FROM f_Vendas AS v
+     INNER JOIN d_Pessoa AS p WITH(NOLOCK) ON p.ID_PESSOA = v.ID_PESSOA
+     INNER JOIN d_Tempo AS t WITH(NOLOCK) ON t.ID_TEMPO = v.ID_TEMPO
+     INNER JOIN d_Loja AS l WITH(NOLOCK) ON l.ID_LOJA = v.ID_LOJA
+WHERE t.DT_REF >= '2020-01-01'
+  AND t.DT_REF <= '2020-01-31'
+  AND l.DS_UF = 'CE' 
